@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">CoodinateApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_closet">ClosetActivity</string>
+    <string name="title_activity_recommend">RecommendActivity</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="btnCloset_text">クローゼット</string>
+    <string name="btnRecommend_text">おすすめの服</string>
+
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="textView2">種別</string>
+    <string name="typeInput">種類を入力</string>
+    <string name="textView3">色</string>
+    <string name="categoryInput">色を入力</string>
+    <string name="textView4">備考</string>
+    <string name="category">カテゴリ</string>
+    <string name="Input">備考を入力</string>
+    <string name="button">登録</string>
+    <string name="button2">戻る</string>
+    <string name="button3">削除</string>
+    <string name="inputdate">登録日</string>
+    <string name="title_activity_closet_detail_">closetDetail_Activity</string>
+</resources>
