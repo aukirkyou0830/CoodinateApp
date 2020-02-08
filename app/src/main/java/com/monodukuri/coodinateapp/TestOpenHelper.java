@@ -14,9 +14,8 @@ public class TestOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase closet) {
         // テーブル作成
-        closet.execSQL("create table if not exists "+
-                closet +
-                        ("clozet_no integer primary key autoincrement," +
+        closet.execSQL("create table if not exists closet("+
+                        "clozet_no integer primary key autoincrement," +
                 "type_no integer not null," +
                 "category_no integer not null, "+
                 "color text , " +
@@ -24,7 +23,7 @@ public class TestOpenHelper extends SQLiteOpenHelper {
                 "clothes_image blob not null," +
                 " regist_date text not null default(datetime(CURRENT_TIMESTAMP, 'localtime')),"+
                 "foreign key (category_no) references ClothesCategory(category_no)," +
-                "foreign key (type_no) references ClothesType(type_no)")
+                "foreign key (type_no) references ClothesType(type_no))"
         );
     }
 
