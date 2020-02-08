@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
-import kotlinx.android.synthetic.main.activity_closet_detail.*
+import kotlinx.android.synthetic.main.content_closet_detail_.*
 
 
 class ClosetDetailActivity() : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_closet_detail)}
+        setContentView(R.layout.content_closet_detail_)}
 }
 
 // // １レコード 追加
