@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.list_wear.view.*
 
 class RecyclerAdapter(private val customList: Array<String>) : RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>(){
 
+    // リスナー格納変数
+    lateinit var listener: OnItemClickListener
+
     // ViewHolderクラス(別ファイルに書いてもOK)
     class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         val sampleImg = view.sampleImg
@@ -32,5 +35,17 @@ class RecyclerAdapter(private val customList: Array<String>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.view.sampleImg.setImageResource(R.mipmap.ic_launcher_round)
         holder.view.sampleTxt.text = customList[position]
+        holder.view.setOnClickListener {
+            listener.onItemClickListener(it, position, customList[position])
+        }
+    }
+    //インターフェースの作成
+    interface OnItemClickListener{
+        fun onItemClickListener(view: View, position: Int, clickedText: String)
+    }
+
+    // リスナー
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        this.listener = listener
     }
 }
