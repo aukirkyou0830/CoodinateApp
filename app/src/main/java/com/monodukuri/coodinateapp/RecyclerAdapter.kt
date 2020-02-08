@@ -2,54 +2,35 @@ package com.monodukuri.coodinateapp
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.list_wear.view.*
 
-class RecyclerAdapter(
-    private val context: Context,
-    private val itemClickListener: RecyclerViewHolder.ItemClickListener,
-    private val itemList: List<String>
-) : RecyclerView.Adapter<RecyclerViewHolder>() {
-    private var mRecyclerView: RecyclerView? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
+class RecyclerAdapter(private val customList: Array<String>) : RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder>(){
 
-
-        val layoutInflater = LayoutInflater.from(context)
-        val mView = layoutInflater.inflate(R.layout.list_item, parent, false)
-
-        mView.setOnClickListener { view ->
-            mRecyclerView?.let {
-                itemClickListener.onItemClick(view, it.getChildAdapterPosition(view))
-            }
-        }
-
-        return RecyclerViewHolder(mView)
-    }
-    override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder?.let {
-            it.itemTextView.text = itemList.get(position)
-            it.itemImageView.setImageResource(R.mipmap.ic_launcher)
-        }
+    // ViewHolderクラス(別ファイルに書いてもOK)
+    class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+        val sampleImg = view.sampleImg
+        val sampleTxt = view.sampleTxt
     }
 
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        if (recyclerView != null) {
-            super.onAttachedToRecyclerView(recyclerView)
-        }
-        mRecyclerView = recyclerView
+    // getItemCount onCreateViewHolder onBindViewHolderを実装
+    // 上記のViewHolderクラスを使ってViewHolderを作成
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val item = layoutInflater.inflate(R.layout.list_wear, parent, false)
+        return CustomViewHolder(item)
     }
 
-    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
-        if (recyclerView != null) {
-            super.onDetachedFromRecyclerView(recyclerView)
-        }
-        mRecyclerView = null
-
-    }
-
+    // recyclerViewのコンテンツのサイズ
     override fun getItemCount(): Int {
-        return itemList.size
+        return customList.size
     }
 
+    // ViewHolderに表示する画像とテキストを挿入
+    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+        holder.view.sampleImg.setImageResource(R.mipmap.ic_launcher_round)
+        holder.view.sampleTxt.text = customList[position]
+    }
 }
