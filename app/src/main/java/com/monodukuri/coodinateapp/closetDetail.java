@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -23,9 +24,9 @@ public class closetDetail extends AppCompatActivity {
      */
     private SQLiteDatabase closet;
     private TestOpenHelper helper;
-    private EditText Key = findViewById(R.id.key);
-    private View remark = findViewById(R.id.Input);
-    private ImageView image = findViewById(R.id.detailPicture);
+    private EditText Key;
+    private View remark;
+    private ImageView image;
     String str;
     String str1;
     String str2;
@@ -41,13 +42,17 @@ public class closetDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_closet_detail_);
+        Key = findViewById(R.id.key);
+        remark = findViewById(R.id.Input);
+        image = findViewById(R.id.detailPicture);
         final Spinner type = findViewById(R.id.type);
         final Spinner color = findViewById(R.id.color);
         final Spinner category = findViewById(R.id.catgory);
         Button deleteButton = findViewById(R.id.deleteButton);
         Button insertButton = findViewById(R.id.registrationButton);
-        String TextKey = Key.toString();
-
+        System.out.println(getIntent().getStringExtra("TEXY_KEY"));
+        Intent intent = getIntent();
+        String TextKey = intent.getStringExtra("TEXT_KEY");
         if(TextKey != null) {
             readData(TextKey);
         }
