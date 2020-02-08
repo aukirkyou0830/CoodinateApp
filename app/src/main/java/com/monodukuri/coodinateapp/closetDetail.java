@@ -47,6 +47,7 @@ public class closetDetail extends AppCompatActivity {
         Button deleteButton = findViewById(R.id.deleteButton);
         Button insertButton = findViewById(R.id.registrationButton);
         String TextKey = Key.toString();
+
         if(TextKey != null) {
             readData(TextKey);
         }
